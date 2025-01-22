@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout base branch
+        uses: actions/checkout@v4.2.2
 
       # Step to fetch code for the PR (checkout the PR source branch)
       - name: Checkout the source branch of the PR
