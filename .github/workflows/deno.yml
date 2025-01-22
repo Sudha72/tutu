@@ -12,6 +12,12 @@ jobs:
 
     steps:
 
+      # Step to fetch code for the PR (checkout the PR source branch)
+      - name: Checkout the source branch of the PR
+        uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ github.head_ref }}  # Checkout the source branch (PR source)
+
       # Debug step to output information about the current pull request
       - name: Debug Information
         run: |
