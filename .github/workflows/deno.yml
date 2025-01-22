@@ -32,6 +32,7 @@ jobs:
       # Debug step to output information about the current pull request
       - name: Debug Information
         run: |
+          ls -R
           echo "Actor: $GITHUB_ACTOR"
           echo "Target ref (base branch): $GITHUB_BASE_REF"
           echo "Pull request ref (head branch): $GITHUB_HEAD_REF"
