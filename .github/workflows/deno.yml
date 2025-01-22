@@ -2,8 +2,9 @@ name: pre-commit-checks
 
 # Controls when the workflow will run
 on:
-  pull_request_target:
-
+  pull_request:
+    # Trigger workflow on PR creation, updates, and reopening
+    types: [opened, synchronize, reopened]
 
 jobs:
   pre-commit:
