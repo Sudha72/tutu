@@ -4,24 +4,12 @@ name: pre-commit-checks
 on:
   pull_request_target:
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
 
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4.2.2
-
-      - name: Set up Python
-        uses: actions/setup-python@v5.3.0
-        with:
-          python-version: "3.11"
-
-      - name: Install dependencies
-        run:  pip install pre-commit
 
       # Debug step to output information about the current pull request
       - name: Debug Information
