@@ -14,9 +14,18 @@ jobs:
 
       # Step to fetch code for the PR (checkout the PR source branch)
       - name: Checkout the source branch of the PR
-        uses: actions/checkout@v4.2.2
-        with:
-          ref: ${{ github.head_ref }}  # Checkout the source branch (PR source)
+        run: |
+          # Add the forked repository as a remote (replace 'forked' with the desired name)
+          git remote add forked https://github.com/${{ github.event.pull_request.head.repo.full_name }}.git
+          
+          # Fetch the branch from the fork
+          git fetch forked +refs/heads/${{ github.head_ref }}:refs/remotes/forked/${{ github.head_ref }}
+
+          # Verify remote branches
+          git branch -r
+          
+          # Checkout the PR source branch from the forked repository
+          git checkout -b ${{ github.head_ref }} forked/${{ github.head_ref }}
 
       # Debug step to output information about the current pull request
       - name: Debug Information
